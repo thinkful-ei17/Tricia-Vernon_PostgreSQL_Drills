@@ -149,3 +149,99 @@ dev-restaurants-app-# ;
  Kitchen 79  | 11372           | Thai
  Black Thai  | 11372           | Thai
 (5 rows)
+
+7. Write a query that returns the id and name of five Italian restaurants in the 10012, 10013, or 10014 zip codes
+
+restaurants-dev=# SELECT (id, name, address_zipcode) FROM restaurants WHERE cuisine= 'Italian' AND address_zipcode IN ('10012', '10
+013', '10014') LIMIT 5;
+                        row
+----------------------------------------------------
+ (109,Arturo'S,10012)
+ (546,"Cha Cha'S Backyard Garden Bar & Cafe",10013)
+ (673,"Tre Giovani Pizza & Pasta",10012)
+ (401,"Casa Bella",10013)
+ (93,"Forlinis Restaurant",10013)
+(5 rows)
+
+8. Create a restaurant
+
+restaurants-dev=# INSERT INTO restaurants(name, borough, cuisine, address_building_number, address_street, address_zipcode) VALUES ('Byte Cafe', 'Brooklyn', 'coffee', '123', 'Atlantic Avenu
+
+restaurants-dev'# e', '11231');
+INSERT 0 1
+
+restaurants-dev=# SELECT id from restaurants WHERE name='Byte Cafe';
+  id
+-------
+ 25361
+(1 row)
+
+
+9.  Create a restaurant and return id and name
+
+restaurants-dev=# SELECT (id, name) from restaurants WHERE name='Byte Cafe';
+         row
+---------------------
+ (25361,"Byte Cafe")
+(1 row)
+
+
+10.  Create three restaurants and return id and name
+restaurants-dev=# INSERT INTO restaurants(
+restaurants-dev(#
+restaurants-dev(# name, borough, cuisine, address_building_number, address_street, address_zipcode) VALUES ('Tricia Cafe', 'Queens', 'Lunch', '456', 'Main Street', '11231');
+INSERT 0 1
+restaurants-dev=# INSERT INTO restaurants(name, borough, cuisine, address_building_number, address_street, address_zipcode) VALUES ('Vernon Cafe', 'Queens', 'Dessert', '456', 'Main Street', '11231');
+INSERT 0 1
+restaurants-dev=# INSERT INTO restaurants(name, borough, cuisine, address_building_number, address_street, address_zipcode) VALUES ('Sams Place', 'Queens', 'Dinner', '890', 'State Street', '11231');
+INSERT 0 1
+restaurants-dev=#
+
+ 
+restaurants-dev=# SELECT id, name from restaurants WHERE name IN ('Tricia Cafe', 'Vernon Cafe', 'Sams Place');
+  id   |    name
+-------+-------------
+ 25363 | Tricia Cafe
+ 25364 | Vernon Cafe
+ 25365 | Sams Place
+(3 rows)
+
+11. Update a Record
+
+restaurants-dev=# UPDATE restaurants SET name = 'DJ Reynolds Pub and Restaurant' WHERE
+restaurants-dev-# nyc_restaurant_id='30191841';
+UPDATE 1
+
+restaurants-dev=# SELECT name, nyc_restaurant_id from restaurants WHERE name='DJ Reynolds Pub and Restaurant';
+              name              | nyc_restaurant_id
+--------------------------------+-------------------
+ DJ Reynolds Pub and Restaurant |          30191841
+(1 row)
+
+12.  Delete a grade by id = 10
+
+restaurants-dev=# DELETE from grades WHERE id=10;
+DELETE 1
+
+13.  A blocked Delete
+
+restaurants-dev=# DELETE from restaurants WHERE id=22;
+ERROR:  update or delete on table "restaurants" violates foreign key constraint "grades_restaurant_id_fkey" on table "grades"
+DETAIL:  Key (id)=(22) is still referenced from table "grades".
+
+14.  Create a table
+restaurants-dev=# CREATE TABLE inspectors( first_name text NOT NULL, last_name text NOT NULL, borough borough, id serial PRIMARY KEY);
+CREATE TABLE
+
+15.  Update a table
+
+restaurants-dev=# ALTER TABLE grades ADD COLUMN notes text;
+ALTER TABLE
+
+
+16. Drop a table
+restaurants-dev=# DROP TABLE inspectors;
+DROP TABLE
+
+
+
