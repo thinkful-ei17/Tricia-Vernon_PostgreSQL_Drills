@@ -1,0 +1,120 @@
+1. Query to return all restaurants
+SELECT * FROM restaurants
+restaurants-dev-# ;
+  id   |                                                name                                                | nyc_restaurant_id |
+  borough    |                             cuisine                              | address_building_number |             address_str
+eet             | address_zipcode
+-------+----------------------------------------------------------------------------------------------------+-------------------+--
+-------------+------------------------------------------------------------------+-------------------------+------------------------
+----------------+-----------------
+     1 | Dj Reynolds Pub And Restaurant                                                                     |          30191841 | M
+anhattan     | Irish                                                            | 351                     | West   57 Street
+                | 10019
+     2 | Riviera Caterer                                                                                    |          40356018 | B
+rooklyn      | American                                                         | 2780                    | Stillwell Avenue
+                | 11224
+     3 | Morris Park Bake Shop                                                                              |          30075445 | B
+ronx         | Bakery                                                           | 1007                    | Morris Park Ave
+                | 10462
+     4 | Wendy'S                                                                                            |          30112340 | B
+rooklyn      | Hamburgers                                                       | 469                     | Flatbush Avenue
+                | 11225
+     5 | Tov Kosher Kitchen                                                                                 |          40356068 | Q
+ueens        | Jewish/Kosher                                                    | 97-22                   | 63 Road
+                | 11374
+     6 | Kosher Island                                                                                      |          40356442 | S
+taten Island | Jewish/Kosher                                                    | 2206                    | Victory Boulevard
+                | 10314
+     7 | Brunos On The Boulevard                                                                            |          40356151 | Q
+ueens        | American                                                         | 8825                    | Astoria Boulevard
+                | 11369
+     8 | Wilken'S Fine Food                                                                                 |          40356483 | B
+rooklyn      | Delicatessen                                                     | 7114                    | Avenue U
+                | 11234
+     9 | Taste The Tropics Ice Cream                                                                        |          40356731 | B
+rooklyn      | Ice Cream, Gelato, Yogurt, Ices                                  | 1839                    | Nostrand Avenue
+                | 11226
+                            |          40356649 | Brooklyn      | American
+| 6409                    | 11 Avenue                              | 11219
+    11 | May May Kitchen                                                                                    |          40358429 | B
+rooklyn      | Chinese                                                          | 1269                    | Sutter Avenue
+                | 11208
+    12 | Seuda Foods                                                                                        |          40360045 | B
+rooklyn      | Jewish/Kosher                                                    | 705                     | Kings Highway
+                | 11223
+    13 | C & C Catering Service                                                                             |          40357437 | B
+rooklyn      | American                                                         | 7715                    | 18 Avenue
+                | 11214
+-- More  --
+
+
+2.  Get Italian restaurants
+
+SELECT * FROM restaurants WHERE cuisine='Italian';
+  id   |                        name                        | nyc_restaurant_id |    borough    | cuisine | address_building_number
+ |       address_street        | address_zipcode
+-------+----------------------------------------------------+-------------------+---------------+---------+------------------------
+-+-----------------------------+-----------------
+    58 | Philadelhia Grille Express                         |          40364305 | Brooklyn      | Italian | 10004
+ | 4 Avenue                    | 11209
+    64 | Isle Of Capri Resturant                            |          40364373 | Manhattan     | Italian | 1028
+ | 3 Avenue                    | 10065
+    79 | Marchis Restaurant                                 |          40364668 | Manhattan     | Italian | 251
+ | East   31 Street            | 10016
+   109 | Arturo'S                                           |          40365387 | Manhattan     | Italian | 106
+ | West Houston Street         | 10012
+   127 | Parkside Restaurant                                |          40365841 | Queens        | Italian | 10701
+ | Corona Avenue               | 11368
+   146 | Nanni Restaurant                                   |          40366157 | Manhattan     | Italian | 146
+ | East   46 Street            | 10017
+   220 | Roadhouse Restaurant                               |          40368034 | Staten Island | Italian | 1402
+ | Clove Road                  | 10301
+   338 | Aunt Bella'S Rest Of Little Neck                   |          40371807 | Queens        | Italian | 4619
+ | Marathon Parkway            | 11362
+   418 | Villa Fiorita                                      |          40375929 | Brooklyn      | Italian | 7720
+ | 18 Avenue                   | 11214
+   546 | Cha Cha'S Backyard Garden Bar & Cafe               |          40383009 | Manhattan     | Italian | 113
+ | Mulberry Street             | 10013
+   645 | Arno Ristorante                                    |          40386747 | Manhattan     | Italian | 141
+ | West   38 Street            | 10018
+   654 | Da Umberto Restaurant                              |          40387162 | Manhattan     | Italian | 107
+ | West   17 Street            | 10011
+   673 | Tre Giovani Pizza & Pasta                          |          40387890 | Manhattan     | Italian | 548
+ | La Guardia Place            | 10012
+   683 | Venice Restaurant                                  |          40387477 | Bronx         | Italian | 772
+ | East  149 Street            | 10455
+   711 | Sette Mezzo                                        |          40388787 | Manhattan     | Italian | 969
+ | Lexington Avenue            | 10021
+   738 | Rino'S                                             |          40389594 | Bronx         | Italian | 3938
+ | East Tremont Avenue         | 10465
+   747 | Queen                                              |          40389903 | Brooklyn      | Italian | 84
+ | Court Street                | 11201
+   774 | Cafe Luna                                          |          40390850 | Staten Island | Italian | 1300
+ | Hylan Boulevard             | 10305
+   119 | V & T Restaurant                                   |          40365577 | Manhattan     | Italian | 1024
+ | Amsterdam Avenue            | 10025
+   128 | Barbetta Restaurant                                |          40365726 | Manhattan     | Italian | 319321
+ | 323 W. 46Th St.             | 10036
+   312 | Cucina Vivolo                                      |          40370497 | Manhattan     | Italian | 138140
+-- More  --
+
+
+3.  Get 10 Italian restaurants, returning the id and name fields
+
+ SELECT id, name FROM restaurants WHERE cuisine='Italian' LIMIT 10;
+ id  |                 name
+-----+--------------------------------------
+  58 | Philadelhia Grille Express
+  64 | Isle Of Capri Resturant
+  79 | Marchis Restaurant
+ 109 | Arturo'S
+ 127 | Parkside Restaurant
+ 146 | Nanni Restaurant
+ 220 | Roadhouse Restaurant
+ 338 | Aunt Bella'S Rest Of Little Neck
+ 418 | Villa Fiorita
+ 546 | Cha Cha'S Backyard Garden Bar & Cafe
+(10 rows)
+
+
+4.  
