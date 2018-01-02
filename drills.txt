@@ -117,4 +117,35 @@ SELECT * FROM restaurants WHERE cuisine='Italian';
 (10 rows)
 
 
-4.  
+4.  Count of Thai restaurants
+
+ SELECT count(*) from restaurants WHERE cuisine='Thai';
+ count
+-------
+   285
+(1 row)
+
+5.  Count of restaurants
+
+dev-restaurants-app=# SELECT count(*) from restaurants
+dev-restaurants-app-# ;
+ count
+-------
+ 25363
+(1 row)
+
+6. Count of Thai restaurants in zip code
+
+dev-restaurants-app=# SELECT name, address_zipcode, cuisine
+dev-restaurants-app-# from restaurants
+dev-restaurants-app-# WHERE address_zipcode='11372'
+dev-restaurants-app-# AND cuisine='Thai'
+dev-restaurants-app-# ;
+    name     | address_zipcode | cuisine
+-------------+-----------------+---------
+ Zabb Elee   | 11372           | Thai
+ Playground  | 11372           | Thai
+ Arunee Thai | 11372           | Thai
+ Kitchen 79  | 11372           | Thai
+ Black Thai  | 11372           | Thai
+(5 rows)
